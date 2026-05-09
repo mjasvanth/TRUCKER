@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Dashboard - TRUCKTECH REPAIR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>TRUCK<span>TECH</span> REPAIR</h1>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#profile" id="profileBtn" class="btn-profile">Profile</a>
+                <a href="#" id="logoutBtn" class="btn-logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dashboard-section">
+        <div class="dashboard-container">
+            <!-- User Profile Card -->
+            <div class="profile-card">
+                <h2>Welcome, <span id="userName"></span>!</h2>
+                <div class="user-info">
+                    <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                    <p><strong>Phone:</strong> <span id="userPhone"></span></p>
+                    <p><strong>City/Location:</strong> <span id="userLocation"></span></p>
+                    <p><strong>GPS Coordinates:</strong> <span id="gpsCoordinates" style="color: var(--primary); font-weight: bold;">Loading...</span></p>
+                    <p><strong>Accuracy:</strong> <span id="gpsAccuracy"></span></p>
+                    <p><strong>Login Time:</strong> <span id="loginTime"></span></p>
+                </div>
+                <div id="locationMap" style="margin-top: 20px; display: none;">
+                    <p><strong>Map Link:</strong> <a id="mapLink" href="#" target="_blank" style="color: var(--primary);">View on Map</a></p>
+                </div>
+                <button id="editProfileBtn" class="btn-edit">Edit Profile</button>
+            </div>
+
+            <!-- Services Section -->
+            <div id="services" class="services-section">
+                <h3 class="section-title">Professional Services</h3>
+                <div class="service-grid">
+                    <div class="card">
+                        <h4>Engine Diagnostics</h4>
+                        <p>Advanced computer scanning for all major heavy-duty brands.</p>
+                        <button class="btn-request" data-service="Engine Diagnostics">Request Service</button>
+                    </div>
+                    <div class="card">
+                        <h4>Brake & Suspension</h4>
+                        <p>Full safety inspections and air brake system repairs.</p>
+                        <button class="btn-request" data-service="Brake & Suspension">Request Service</button>
+                    </div>
+                    <div class="card">
+                        <h4>Preventative Maintenance</h4>
+                        <p>Oil changes, filter replacements, and fleet health checks.</p>
+                        <button class="btn-request" data-service="Preventative Maintenance">Request Service</button>
+                    </div>
+                    <div class="card">
+                        <h4>Transmission Repair</h4>
+                        <p>Complete transmission overhauls and clutch service.</p>
+                        <button class="btn-request" data-service="Transmission Repair">Request Service</button>
+                    </div>
+                    <div class="card">
+                        <h4>Electrical Systems</h4>
+                        <p>Battery, alternator, and starter diagnostics and repair.</p>
+                        <button class="btn-request" data-service="Electrical Systems">Request Service</button>
+                    </div>
+                    <div class="card">
+                        <h4>24/7 Roadside Assistance</h4>
+                        <p>Emergency breakdown service and towing available round the clock.</p>
+                        <button class="btn-request" data-service="24/7 Roadside Assistance">Request Service</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Data Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Admin Notification - Login & Location Data</h2>
+            <div class="admin-data">
+                <p><strong>Timestamp:</strong> <span id="adminTime"></span></p>
+                <p><strong>Username/Email:</strong> <span id="adminEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="adminPhone"></span></p>
+                <p><strong>Location:</strong> <span id="adminLocation"></span></p>
+                <p><strong>GPS Coordinates:</strong> <span id="adminGPS"></span></p>
+                <p><strong>Browser Info:</strong> <span id="adminBrowser"></span></p>
+                <p><strong>Device Type:</strong> <span id="adminDevice"></span></p>
+                <textarea id="adminNote" placeholder="Admin notes..."></textarea>
+                <button id="sendAdminBtn" class="btn-admin-send">Send to Admin</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
