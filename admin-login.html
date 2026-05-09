@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - TRUCKTECH REPAIR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>TRUCK<span>TECH</span> REPAIR</h1>
+            <nav>
+                <a href="index.html">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="login-section">
+        <div class="login-container admin-login-container">
+            <div class="login-box admin-login-box">
+                <h2>Admin Login</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">Access Control Panel</p>
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminEmail">Admin Email</label>
+                        <input type="email" id="adminEmail" name="adminEmail" required placeholder="admin@trucktech.com">
+                        <span class="error-message" id="adminEmailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminPassword">Admin Password</label>
+                        <input type="password" id="adminPassword" name="adminPassword" required placeholder="Enter admin password">
+                        <span class="error-message" id="adminPasswordError"></span>
+                    </div>
+
+                    <button type="submit" class="btn-login">Access Admin Panel</button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Not an admin? <a href="login.html">User Login</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

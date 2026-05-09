@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TRUCKTECH REPAIR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>TRUCK<span>TECH</span> REPAIR</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#" id="adminLogout" class="btn-logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="admin-section">
+        <div class="admin-container">
+            <div class="admin-header">
+                <h2>Admin Control Panel</h2>
+                <p>Manage Users, Logins & Service Requests</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalUsers">0</h3>
+                    <p>Total Users Registered</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalLogins">0</h3>
+                    <p>Total Logins</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalServices">0</h3>
+                    <p>Service Requests</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="todayLogins">0</h3>
+                    <p>Today's Logins</p>
+                </div>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="logins">User Logins</button>
+                <button class="tab-btn" data-tab="services">Service Requests</button>
+                <button class="tab-btn" data-tab="locations">User Locations</button>
+                <button class="tab-btn" data-tab="users">All Users</button>
+            </div>
+
+            <!-- Tab 1: User Logins -->
+            <div id="logins" class="tab-content active">
+                <h3>Recent User Logins</h3>
+                <div class="search-box">
+                    <input type="text" id="loginSearch" placeholder="Search by email or location...">
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Location</th>
+                                <th>Phone</th>
+                                <th>GPS Coordinates</th>
+                                <th>Accuracy</th>
+                                <th>Login Time</th>
+                                <th>Device</th>
+                            </tr>
+                        </thead>
+                        <tbody id="loginsTable">
+                            <tr>
+                                <td colspan="8" style="text-align: center; padding: 20px;">No login data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 2: Service Requests -->
+            <div id="services" class="tab-content">
+                <h3>Service Requests</h3>
+                <div class="search-box">
+                    <input type="text" id="serviceSearch" placeholder="Search by service type...">
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Service Type</th>
+                                <th>User Email</th>
+                                <th>Location</th>
+                                <th>Phone</th>
+                                <th>GPS Location</th>
+                                <th>Request Time</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="servicesTable">
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 20px;">No service requests available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 3: User Locations Map -->
+            <div id="locations" class="tab-content">
+                <h3>User Locations Map</h3>
+                <div id="locationsList" class="locations-grid">
+                    <p style="text-align: center; padding: 40px;">No location data available</p>
+                </div>
+            </div>
+
+            <!-- Tab 4: All Users -->
+            <div id="users" class="tab-content">
+                <h3>All Registered Users</h3>
+                <div class="search-box">
+                    <input type="text" id="userSearch" placeholder="Search by name or email...">
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>City/Location</th>
+                                <th>Registration Time</th>
+                                <th>Last Login</th>
+                                <th>Login Count</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTable">
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 20px;">No user data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Data Export Section -->
+            <div class="admin-actions">
+                <button id="exportBtn" class="btn-export">Export All Data (CSV)</button>
+                <button id="clearDataBtn" class="btn-clear">Clear All Data</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

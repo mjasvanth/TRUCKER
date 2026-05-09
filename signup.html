@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - TRUCKTECH REPAIR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>TRUCK<span>TECH</span> REPAIR</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-box">
+                <h2>Create Account</h2>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(123) 456-7890">
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+
+                    <!-- OTP Verification Section -->
+                    <div class="form-group" id="otpSection" style="display: none; background: #f0f8ff; padding: 15px; border-radius: 5px; border-left: 4px solid var(--primary);">
+                        <h3 style="margin: 0 0 10px 0; font-size: 14px; color: var(--dark);">📱 Mobile OTP Verification</h3>
+                        <p style="margin: 0 0 10px 0; font-size: 12px; color: #666;">
+                            An OTP has been generated for verification:
+                        </p>
+                        <div style="background: white; padding: 10px; border-radius: 5px; text-align: center; margin-bottom: 10px; border: 2px solid var(--primary);">
+                            <p style="margin: 0; font-size: 12px; color: #666;">Your OTP:</p>
+                            <p id="otpDisplay" style="margin: 5px 0 0 0; font-size: 24px; font-weight: bold; color: var(--primary); letter-spacing: 5px;">----</p>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="otpInput" placeholder="Enter 4-digit OTP" style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; letter-spacing: 2px;">
+                            <button type="button" id="verifyOtpBtn" style="padding: 10px 15px; background: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Verify OTP</button>
+                        </div>
+                        <span class="error-message" id="otpError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Create a password">
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+                        <span class="error-message" id="confirmError"></span>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the Terms of Service</label>
+                    </div>
+
+                    <button type="submit" class="btn-login">Create Account</button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Already have an account? <a href="login.html">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
