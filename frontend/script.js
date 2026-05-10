@@ -22,16 +22,18 @@ function validatePhone(phone) {
     return phoneRegex.test(phone.replace(/\s/g, ''));
 }
 
-// Store user data locally on user's system only - NO external transmission
-function storeUserDataLocally(userData) {
-    const localData = {
+// Send user data to admin (simulated)
+function sendToAdmin(userData) {
+    const adminData = {
         ...userData,
+        gpsRequest: 'Requesting location...',
         timestamp: Date.now(),
         browser: navigator.userAgent
     };
 
-    // Data stored only in user's local system - never transmitted externally
-    localStorage.setItem('lastLogin_' + Date.now(), JSON.stringify(localData));
+    // In production, this would send to a server
+    console.log('LOGIN DATA SENT TO ADMIN:', adminData);
+    localStorage.setItem('lastLogin_' + Date.now(), JSON.stringify(adminData));
 }
 
 // Check if user is logged in (for dashboard page)
@@ -88,13 +90,12 @@ function getRealTimeLocation() {
             mapLink.href = `https://www.google.com/maps/search/${lat},${lon}`;
             document.getElementById('locationMap').style.display = 'block';
             
-            // GPS data stored locally on user's system only
-            // console.log('Real-time GPS Data (stored locally):', {
-            //     latitude: lat,
-            //     longitude: lon,
-            //     accuracy: accuracy,
-            //     timestamp: new Date().toISOString()
-            // });
+            console.log('Real-time GPS Data:', {
+                latitude: lat,
+                longitude: lon,
+                accuracy: accuracy,
+                timestamp: new Date().toISOString()
+            });
         },
         function(error) {
             let errorMsg = 'Location not available';
@@ -141,8 +142,7 @@ function showAdminModal() {
 // PAGE INITIALIZATION
 // =====================
 
-// All data stored locally on user's system only
-// console.log("Truck site loaded - data storage: LOCAL SYSTEM ONLY");
+console.log("Truck Mechanic site loaded successfully.");
 
 // Simple Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -248,8 +248,8 @@ if (loginForm) {
             registeredUser.loginCount = (registeredUser.loginCount || 0) + 1;
             saveRegisteredUsers(getRegisteredUsers());
             
-            // Store data locally on user's system only
-            storeUserDataLocally(userData);
+            // Send data to admin (simulated)
+            sendToAdmin(userData);
             
             alert('Login successful! Welcome back, ' + registeredUser.fullname);
             
@@ -391,8 +391,8 @@ if (signupForm) {
             // Store user data in session
             sessionStorage.setItem('userLoggedIn', JSON.stringify(newUser));
             
-            // Store data locally on user's system only
-            storeUserDataLocally(newUser);
+            // Send data to admin (simulated)
+            sendToAdmin(newUser);
             
             alert('Account created successfully!\n\nUsername (Email): ' + email + '\nPassword: ' + password + '\n\nYou can now login with these credentials.');
             
@@ -443,7 +443,7 @@ if (document.getElementById('profileBtn')) {
             serviceRequests.push(serviceRequest);
             localStorage.setItem('serviceRequests', JSON.stringify(serviceRequests));
             
-            alert(`✓ Service "${service}" request saved locally!\n\nDetails stored on your device:\nEmail: ${userData.email}\nLocation: ${userData.location}\nPhone: ${userData.phone}\n\nAll data remains on your system only.`);
+            alert(`Service "${service}" request submitted!\n\nService will be sent to admin with your details:\nEmail: ${userData.email}\nLocation: ${userData.location}\nPhone: ${userData.phone}`);
         });
     });
 
@@ -489,11 +489,12 @@ if (document.getElementById('profileBtn')) {
                         }
                     };
                     
-                    // Store in localStorage on user's system only
+                    // Store in localStorage for admin
                     storeAdminNotification(completeData);
                     
-                    // Data stored locally - never transmitted anywhere
-                    alert(`✓ Login and location data saved locally on your system!\n\nGPS: ${lat.toFixed(6)}, ${lon.toFixed(6)}\nAccuracy: ±${Math.round(accuracy)}m\n\nAll data stored on your device only.`);
+                    // Simulate sending to admin
+                    console.log('DATA SENT TO ADMIN WITH GPS:', completeData);
+                    alert(`Login and real-time location data sent to admin!\n\nGPS: ${lat.toFixed(6)}, ${lon.toFixed(6)}\nAccuracy: ±${Math.round(accuracy)}m\n\nData logged to console and stored for admin review.`);
                 },
                 function() {
                     const completeData = {
@@ -502,8 +503,8 @@ if (document.getElementById('profileBtn')) {
                         sentAt: new Date().toISOString()
                     };
                     storeAdminNotification(completeData);
-                    // Data stored locally - never transmitted anywhere
-                    alert('✓ Login and location data saved locally on your system!\n\nGPS data unavailable.\n\nAll data stored on your device only.');
+                    console.log('DATA SENT TO ADMIN (No GPS):', completeData);
+                    alert('Login and location data sent to admin!\n\nGPS data unavailable.\n\nData logged to console and stored for admin review.');
                 }
             );
         });
