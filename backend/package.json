@@ -1,7 +1,7 @@
 {
-  "name": "trucker-repair-backend",
+  "name": "tamil-trucker-repair-backend",
   "version": "1.0.0",
-  "description": "Backend API for Trucker Repair Services",
+  "description": "Backend API for Tamil Trucker Repair Services",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "keywords": [
-    "trucker",
+    "tamil-trucker",
     "repair",
     "api",
     "express"

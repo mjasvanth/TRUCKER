@@ -1,6 +1,6 @@
-# TRUCKER REPAIR - Backend API
+# TAMIL TRUCKER REPAIR - Backend API
 
-Backend API service for the TRUCKER Truck Repair Management System.
+Backend API service for the TAMIL TRUCKER Truck Repair Management System.
 
 ## Project Structure
 
