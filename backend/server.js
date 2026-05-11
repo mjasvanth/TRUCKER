@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 // Initialize Express app
 const app = express();
@@ -11,6 +12,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Serve static files (images, css, js)
+app.use(express.static(path.join(__dirname, '../')));
 
 // =====================
 // ROUTES
