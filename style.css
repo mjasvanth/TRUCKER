@@ -704,10 +704,14 @@ nav a {
 
 .contact-card {
     background: rgba(255,255,255,0.1);
-    padding: 25px;
+    padding: 40px;
     border-radius: 8px;
     border-left: 4px solid var(--primary);
     transition: background 0.3s;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contact-card:hover {
@@ -717,11 +721,14 @@ nav a {
 .contact-card h4 {
     color: var(--primary);
     margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
 }
 
 .contact-card p {
     color: #ddd;
     margin: 10px 0;
+    font-size: 1.1rem;
 }
 
 .contact-card a {
