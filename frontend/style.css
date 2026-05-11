@@ -599,6 +599,147 @@ nav a {
     background: #c82333;
 }
 
+/* Service Request Button */
+.btn-service {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-service:hover {
+    background: #ff5500;
+}
+
+.card .btn-service {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Owners Section */
+.owners-section {
+    background: linear-gradient(135deg, #f9f9f9 0%, #e8e8e8 100%);
+    padding: 60px 20px;
+}
+
+.owners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.owner-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-top: 4px solid var(--primary);
+    transition: transform 0.3s;
+}
+
+.owner-card:hover {
+    transform: translateY(-5px);
+}
+
+.owner-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary);
+    margin-bottom: 20px;
+}
+
+.owner-card h4 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+.owner-card p {
+    color: #333;
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+.owner-card strong {
+    color: var(--dark);
+}
+
+/* Contact Section */
+.contact-section {
+    background: var(--dark);
+    color: white;
+    padding: 60px 20px;
+}
+
+.contact-section .section-title {
+    color: white;
+    border-bottom-color: var(--primary);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.contact-card {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+    transition: background 0.3s;
+}
+
+.contact-card:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.contact-card h4 {
+    color: var(--primary);
+    margin-top: 0;
+}
+
+.contact-card p {
+    color: #ddd;
+    margin: 10px 0;
+}
+
+.contact-card a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.contact-card a:hover {
+    color: #ff5500;
+}
+
+/* Footer */
+.footer {
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid var(--primary);
+}
+
+.footer p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
 /* Responsive Design for Admin */
 @media (max-width: 1024px) {
     .admin-table {
