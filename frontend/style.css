@@ -759,6 +759,18 @@ nav a {
     text-decoration: underline;
 }
 
+.email-link {
+    color: var(--primary) !important;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.email-link:hover {
+    color: #dc3545 !important;
+    text-decoration: underline;
+}
+
 /* Footer */
 .footer {
     background: #000;
