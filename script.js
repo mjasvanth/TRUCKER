@@ -16,6 +16,20 @@ function validateEmail(email) {
     return emailRegex.test(email);
 }
 
+// Toggle password visibility
+function togglePasswordVisibility(fieldId, iconId) {
+    const field = document.getElementById(fieldId);
+    const icon = document.getElementById(iconId);
+    
+    if (field.type === 'password') {
+        field.type = 'text';
+        icon.textContent = '🔓';
+    } else {
+        field.type = 'password';
+        icon.textContent = '👁️';
+    }
+}
+
 // Phone validation
 function validatePhone(phone) {
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;

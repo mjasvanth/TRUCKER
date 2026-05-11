@@ -31,7 +31,12 @@
 
                     <div class="form-group">
                         <label for="adminPassword">Admin Password</label>
-                        <input type="password" id="adminPassword" name="adminPassword" required placeholder="Enter admin password">
+                        <div style="position: relative;">
+                            <input type="password" id="adminPassword" name="adminPassword" required placeholder="Enter admin password" autocomplete="current-password">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('adminPassword', 'adminPasswordToggleIcon')" title="Show/Hide password">
+                                <span id="adminPasswordToggleIcon">👁️</span>
+                            </button>
+                        </div>
                         <span class="error-message" id="adminPasswordError"></span>
                     </div>
 
@@ -40,6 +45,7 @@
 
                 <div class="login-footer">
                     <p>Not an admin? <a href="login.html">User Login</a></p>
+                    <p><a href="forgot-password.html">Forgot Password?</a></p>
                 </div>
             </div>
         </div>

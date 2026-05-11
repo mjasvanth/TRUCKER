@@ -31,7 +31,12 @@
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                        <div style="position: relative;">
+                            <input type="password" id="password" name="password" required placeholder="Enter your password" autocomplete="current-password">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password', 'passwordToggleIcon')" title="Show/Hide password">
+                                <span id="passwordToggleIcon">👁️</span>
+                            </button>
+                        </div>
                         <span class="error-message" id="passwordError"></span>
                     </div>
 
@@ -50,7 +55,7 @@
                 </form>
 
                 <div class="login-footer">
-                    <a href="#forgot-password">Forgot Password?</a>
+                    <a href="forgot-password.html">Forgot Password?</a>
                 </div>
             </div>
 

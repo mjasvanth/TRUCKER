@@ -181,6 +181,24 @@ nav a {
     font-weight: normal;
 }
 
+.toggle-password,
+.toggle-email {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: opacity 0.3s;
+}
+
+.toggle-password:hover,
+.toggle-email:hover {
+    opacity: 0.7;
+}
+
 .error-message {
     color: #dc3545;
     font-size: 0.85rem;
