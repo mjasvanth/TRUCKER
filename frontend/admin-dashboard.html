@@ -154,36 +154,6 @@
         </div>
     </section>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js"></script>
-
-    <!-- Firebase Config -->
-    <script src="firebase-config.js"></script>
-
     <script src="script.js"></script>
-
-    <!-- Firebase Analytics Initialization -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
-        
-        const firebaseConfig = {
-            apiKey: "AIzaSyCfD14fL2CZrGMK5ze7W-gEm522iHtxLA0",
-            authDomain: "tamil-trucker.firebaseapp.com",
-            projectId: "tamil-trucker",
-            storageBucket: "tamil-trucker.firebasestorage.app",
-            messagingSenderId: "705729524984",
-            appId: "1:705729524984:web:89d57c19d09bd8ba85f70d",
-            measurementId: "G-Z1JRKN9353"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        console.log("Firebase initialized with Analytics tracking");
-    </script>
 </body>
 </html>
