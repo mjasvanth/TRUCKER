@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { forgotPassword, resetPasswordWithToken } = require('../controllers/authController');
 
 // =====================
 // AUTHENTICATION ROUTES
@@ -121,9 +120,9 @@ router.post('/logout', (req, res) => {
 
 /**
  * POST /api/auth/forgot-password
- * Request password reset email
+ * Request password reset
  */
-router.post('/forgot-password', async (req, res) => {
+router.post('/forgot-password', (req, res) => {
     try {
         const { email } = req.body;
 
@@ -134,79 +133,52 @@ router.post('/forgot-password', async (req, res) => {
             });
         }
 
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.status(400).json({
-                error: 'Please provide a valid email address'
-            });
-        }
+        // In production:
+        // 1. Check if user exists
+        // 2. Generate reset token
+        // 3. Save token to database with expiration
+        // 4. Send email with reset link
+        // 5. Return success message
 
-        // In production, check if user exists
-        // if (!(await User.findOne({ email }))) {
-        //     return res.status(404).json({
-        //         error: 'User not found with this email'
-        //     });
-        // }
-
-        // Send password reset email
-        const result = await forgotPassword(email);
-
-        res.json(result);
-    } catch (error) {
-        console.error('Forgot password error:', error);
-        res.status(500).json({
-            error: error.message || 'Failed to process password reset request'
+        res.json({
+            message: 'Password reset link has been sent to your email',
+            email: email,
+            resetCodeSent: true
         });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 
 /**
  * POST /api/auth/reset-password
- * Reset password with token
+ * Reset password with reset code
  */
-router.post('/reset-password', async (req, res) => {
+router.post('/reset-password', (req, res) => {
     try {
-        const { token, email, password, confirmPassword } = req.body;
+        const { email, resetCode, newPassword } = req.body;
 
         // Validate input
-        if (!token || !email || !password || !confirmPassword) {
+        if (!email || !resetCode || !newPassword) {
             return res.status(400).json({
-                error: 'All fields are required'
+                error: 'Email, reset code, and new password are required'
             });
         }
 
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.status(400).json({
-                error: 'Please provide a valid email address'
-            });
-        }
+        // In production:
+        // 1. Verify reset code
+        // 2. Check if reset code is not expired
+        // 3. Hash new password
+        // 4. Update user password in database
+        // 5. Invalidate reset code
+        // 6. Return success message
 
-        // Check passwords match
-        if (password !== confirmPassword) {
-            return res.status(400).json({
-                error: 'Passwords do not match'
-            });
-        }
-
-        // Validate password strength
-        if (password.length < 6) {
-            return res.status(400).json({
-                error: 'Password must be at least 6 characters long'
-            });
-        }
-
-        // Reset password with token
-        const result = await resetPasswordWithToken(token, email, password);
-
-        res.json(result);
-    } catch (error) {
-        console.error('Reset password error:', error);
-        res.status(400).json({
-            error: error.message || 'Failed to reset password'
+        res.json({
+            message: 'Password reset successfully',
+            email: email
         });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 

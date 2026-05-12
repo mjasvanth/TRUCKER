@@ -30,6 +30,20 @@ function togglePasswordVisibility(fieldId, iconId) {
     }
 }
 
+// Toggle email visibility (for forgot password)
+function toggleEmailVisibility() {
+    const emailField = document.getElementById('resetEmail');
+    const icon = document.getElementById('emailToggleIcon');
+    
+    if (emailField.type === 'email') {
+        emailField.type = 'text';
+        icon.textContent = '🔓';
+    } else {
+        emailField.type = 'email';
+        icon.textContent = '👁️';
+    }
+}
+
 // Phone validation
 function validatePhone(phone) {
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -271,6 +285,84 @@ if (loginForm) {
             window.location.href = 'dashboard.html';
         }
     });
+}
+
+// =====================
+// FORGOT PASSWORD FORM HANDLER
+// =====================
+
+function handleResetSubmit(event) {
+    event.preventDefault();
+    
+    const resetEmail = document.getElementById('resetEmail').value.trim();
+    const successMessage = document.getElementById('successMessage');
+    const resetForm = document.getElementById('resetForm');
+    
+    // Clear previous messages
+    if (successMessage) {
+        successMessage.style.display = 'none';
+    }
+    
+    // Validate email
+    if (!resetEmail || !validateEmail(resetEmail)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+    
+    // Check if user exists
+    const user = findUserByEmail(resetEmail);
+    if (!user) {
+        alert('No account found with this email address. Please sign up first.');
+        return;
+    }
+    
+    // Generate reset code (in production, this would be sent via email)
+    const resetCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+    const resetData = {
+        email: resetEmail,
+        resetCode: resetCode,
+        resetTime: new Date().toLocaleString(),
+        resetTimestamp: Date.now(),
+        expired: false
+    };
+    
+    // Store reset request
+    const resetRequests = JSON.parse(localStorage.getItem('resetRequests') || '[]');
+    resetRequests.push(resetData);
+    localStorage.setItem('resetRequests', JSON.stringify(resetRequests));
+    
+    // In production, send email with reset link
+    console.log('PASSWORD RESET REQUEST:', {
+        email: resetEmail,
+        resetCode: resetCode,
+        resetLink: `${window.location.origin}/reset-password.html?code=${resetCode}&email=${encodeURIComponent(resetEmail)}`,
+        timestamp: new Date().toLocaleString()
+    });
+    
+    // Show success message
+    if (successMessage) {
+        successMessage.style.display = 'block';
+        successMessage.innerHTML = `
+            ✓ Password reset link has been sent to <strong>${resetEmail}</strong>
+            <br><br>
+            <strong>Demo Mode - Reset Code:</strong> <code style="background: #f0f0f0; padding: 5px 10px; border-radius: 3px;">${resetCode}</code>
+            <br><strong>Or use this link:</strong><br>
+            <a href="reset-password.html?code=${resetCode}&email=${encodeURIComponent(resetEmail)}" style="color: #007bff; text-decoration: underline;">Reset Password Link</a>
+        `;
+    }
+    
+    // Clear form
+    resetForm.reset();
+    document.getElementById('resetEmail').focus();
+    
+    // Log for admin dashboard
+    const adminNotification = {
+        type: 'password_reset_request',
+        email: resetEmail,
+        resetCode: resetCode,
+        requestTime: new Date().toISOString()
+    };
+    storeAdminNotification(adminNotification);
 }
 
 // =====================

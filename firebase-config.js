@@ -4,12 +4,13 @@
 // To use Firebase, sign up at https://firebase.google.com/
 
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyCfD14fL2CZrGMK5ze7W-gEm522iHtxLA0",
+    authDomain: "tamil-trucker.firebaseapp.com",
+    projectId: "tamil-trucker",
+    storageBucket: "tamil-trucker.firebasestorage.app",
+    messagingSenderId: "705729524984",
+    appId: "1:705729524984:web:89d57c19d09bd8ba85f70d",
+    measurementId: "G-Z1JRKN9353"
 };
 
 // Initialize Firebase
